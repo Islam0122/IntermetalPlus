@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'app.basemodel',
     'app.product',
     'app.about_us',
+    'app.ContactUsMessage'
 
 
 ]
