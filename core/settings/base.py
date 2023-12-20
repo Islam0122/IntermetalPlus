@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'app.basemodel',
     'app.product',
+    'app.about_us',
 
 
 ]
