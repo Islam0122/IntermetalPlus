@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: data_IntermetalPlus
+    environment:
+      - POSTGRES_DB=IntermetalPlus
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=kg121007
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: .
+    container_name: IntermetalPlus
+    depends_on:
+      - db
+    command: sh -c "python manage.py makemigrations &&
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8001:8000"

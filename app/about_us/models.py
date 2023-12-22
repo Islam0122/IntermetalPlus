@@ -6,7 +6,7 @@ from django.db import models
 class AboutUs(models.Model):
     working_hours = models.CharField(max_length=100, verbose_name='Working Hours')
     contact_address = models.TextField(blank=True, null=True, verbose_name='Contact Address')
-    contact_phone = models.CharField(max_length=20, blank=True, verbose_name='Contact Phone')
+    contact_phone = models.CharField(max_length=200, blank=True, verbose_name='Contact Phone')
     contact_email = models.EmailField(verbose_name='Contact Email')
 
     class Meta:

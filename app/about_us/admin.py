@@ -25,8 +25,8 @@ admin.site.register(AboutUs, AboutUsAdmin)
 def create_about_us(sender, **kwargs):
     if AboutUs.objects.count() == 0:
         AboutUs.objects.create(
-            working_hours='Ваши рабочие часы по умолчанию',
-            contact_address='Ваш адрес по умолчанию',
-            contact_phone='Ваш номер телефона по умолчанию',
-            contact_email='Ваш адрес электронной почты по умолчанию'
+            working_hours='',
+            contact_address='',
+            contact_phone='',
+            contact_email=''
         )
