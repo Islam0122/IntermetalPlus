@@ -3,7 +3,6 @@ from decouple import config as env
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 SECRET_KEY = env('SECRET_KEY')
 ALLOWED_HOSTS = ['*']
 DEBUG = True
