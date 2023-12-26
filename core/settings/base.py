@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from decouple import config as env
 
@@ -64,7 +65,7 @@ TEMPLATES = [
 ]
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR.joinpath("static")
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR.joinpath("media")
 
 WSGI_APPLICATION = 'core.wsgi.application'

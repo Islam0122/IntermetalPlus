@@ -9,15 +9,13 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    category = serializers.SlugRelatedField(slug_field='title', queryset=Category.objects.all())
+    category = CategorySerializer(many=True)
 
     class Meta:
         model = Product
-        fields = '__all__'
-        read_only_fields = ('created_at', 'updated_at')
-        depth = 1
+        fields = ['id', 'img1','img2' ,'img3','img4','category', 'name',
+                  'description','price',
+                  'manufacturer',
+                  'created_at', 'updated_at']
 
-    def validate_price(self, value):
-        if value < 0:
-            raise serializers.ValidationError("Цена не может быть отрицательной.")
-        return value
+        read_only_fields = ('created_at', 'updated_at')
