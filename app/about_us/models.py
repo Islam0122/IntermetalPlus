@@ -1,25 +1,18 @@
-
+from app.basemodel.models import BaseModel
 from django.db import models
 
 
-
-class AboutUs(models.Model):
-    working_hours = models.CharField(max_length=100, verbose_name='Working Hours')
-    contact_address = models.TextField(blank=True, null=True, verbose_name='Contact Address')
-    contact_phone = models.CharField(max_length=200, blank=True, verbose_name='Contact Phone')
-    contact_email = models.EmailField(verbose_name='Contact Email')
+class AboutUs(BaseModel):
+    working_hours = models.CharField(max_length=100, verbose_name='Working Hours',
+                                     help_text='Specify the working hours.')
+    address_url = models.URLField(blank=True, null=True, verbose_name='Address URL',
+                                  help_text='URL of the contact address.')
+    contact_phone = models.PositiveIntegerField(verbose_name='Contact Phone',
+                                                help_text='Specify the contact phone number.')
+    contact_email = models.EmailField(verbose_name='Contact Email', help_text='Specify the contact email address.')
+    telegram_url = models.URLField(blank=True, null=True, verbose_name='Telegram URL', help_text='URL for Telegram.')
+    # instagram_url = models.URLField(blank=True, null=True, verbose_name='Instagram URL', help_text='URL for Instagram.')
 
     class Meta:
-        verbose_name_plural = 'About Us'
-
-# class AboutUs(BaseModel):
-#     working_hours = models.CharField(max_length=100, verbose_name='Working Hours')
-#     contact_address = models.URLField(blank=True, null=True, verbose_name='address URL')
-#     contact_phone = models.CharField(max_length=20, verbose_name='Contact Phone')
-#     contact_email = models.EmailField(verbose_name='Contact Email')
-#
-#     # shop_name = models.CharField(max_length=255, verbose_name='Shop Name')
-#     # description = models.TextField(verbose_name='Description')
-#     # contact_address = models.CharField(max_length=255, verbose_name='Contact Address')
-#     # telegram = models.URLField(blank=True, null=True, verbose_name='Telegram URL')
-#     # instagram_url = models.URLField(blank=True, null=True, verbose_name='Instagram URL')
+        verbose_name = 'О нас'
+        verbose_name_plural = 'О нас'

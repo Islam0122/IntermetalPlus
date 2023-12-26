@@ -5,4 +5,11 @@ from .models import AboutUs
 class AboutUsSerializer(serializers.ModelSerializer):
     class Meta:
         model = AboutUs
-        fields = ('id', 'working_hours', 'contact_address', 'contact_phone', 'contact_email')
+        fields = (
+            'working_hours',
+            'address_url',
+            'contact_phone',
+            'contact_email',
+            'telegram_url',
+            # 'instagram_url',
+        )
