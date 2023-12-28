@@ -31,3 +31,11 @@ class ProductViewSet(ModelViewSet):
             base_queryset = base_queryset.filter(category__title__iexact=category_filter)
 
         return base_queryset
+
+
+class RecommendedProductsView(ModelViewSet):
+    serializer_class = ProductSerializer
+    lookup_field = 'pk'
+
+    def get_queryset(self):
+        return Product.objects.filter(is_recommended=True)

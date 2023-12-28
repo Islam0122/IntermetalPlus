@@ -10,7 +10,7 @@ from django.conf import settings
 
 
 class Category(BaseModel):
-    title = models.CharField(_('Категория'),max_length=200)
+    title = models.CharField(_('Категория'), max_length=200)
 
     def __str__(self):
         return self.title
@@ -25,6 +25,7 @@ def product_image_path(instance, filename):
     # Upload to "Product_images/<name>/" using the current timestamp
     return f'Product_imgs/{instance.name}/{timezone.now().strftime("%Y%m%d%H%M%S")}_{filename}'
 
+
 class Product(BaseModel):
     name = models.CharField(_('Наименование'), max_length=204)
     img1 = models.ImageField(_('Изображение'), upload_to=product_image_path, blank=True, null=True)
@@ -37,6 +38,7 @@ class Product(BaseModel):
     price = models.CharField(_('Цена'), max_length=20)
     manufacturer = models.CharField(_('Производитель'), max_length=100, blank=True, null=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+    is_recommended = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -44,7 +46,6 @@ class Product(BaseModel):
     class Meta:
         verbose_name = _('Товар')
         verbose_name_plural = _('Товары')
-
 
 # Модель для отзывов о товарах
 # class Review(models.Model):
