@@ -5,6 +5,7 @@ from django.db import models
 
 
 class AboutUs(BaseModel):
+    description = models.TextField(verbose_name='Description')
     working_hours = models.CharField(max_length=100, verbose_name='Working Hours',
                                      help_text='Specify the working hours.')
     address_url = models.URLField(blank=True, null=True, verbose_name='Address URL',
