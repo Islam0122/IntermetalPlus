@@ -13,3 +13,11 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# 'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'NEW_YEAR',
+#         'USER': config('DB_USER'),
+#         'PASSWORD': config('DB_USER_PASSWORD'),
+#         'HOST': config('DB_HOST'),
+#         'PORT': config('DB_PORT')
+#     }
