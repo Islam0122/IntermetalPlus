@@ -4,7 +4,6 @@ from .drf_yasg import urlpatterns as urls_swagger
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
-                  path('api/v1/about_us/', include("app.about_us.urls")),
+                  path('api/v1/contact/', include("app.contact.urls")),
                   path('api/v1/products/', include("app.product.urls")),
-                  path('api/v1/contactusmessage/', include("app.ContactUsMessage.urls")),
               ] + urls_swagger

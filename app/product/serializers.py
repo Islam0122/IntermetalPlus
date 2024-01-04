@@ -1,21 +1,18 @@
 from rest_framework import serializers
-from .models import Product, Category
+from .models import Product, Model
 
 
-class CategorySerializer(serializers.ModelSerializer):
+class ModelSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Category
+        model = Model
         fields = ['title']
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    category = CategorySerializer(many=True)
+    model = serializers.SlugRelatedField(slug_field='title', queryset=Model.objects.all())
 
     class Meta:
         model = Product
-        fields = ['id', 'img1','img2' ,'img3','img4','category', 'name',
-                  'description','price',
-                  'manufacturer',
-                  'created_at', 'updated_at']
-
+        fields = ['id', 'img1', 'img2', 'img3', 'name','model', 'manufacturer',
+                  'description', 'price', 'created_at', 'updated_at']
         read_only_fields = ('created_at', 'updated_at')

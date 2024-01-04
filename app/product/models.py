@@ -9,33 +9,33 @@ from django.utils.translation import gettext as _
 from django.conf import settings
 
 
-class Category(BaseModel):
-    title = models.CharField(_('Категория'), max_length=200)
+# Модель для товаров
+class Model(BaseModel):
+    title = models.CharField(_('Наименование модели'), max_length=200)
 
     def __str__(self):
         return self.title
 
     class Meta:
-        verbose_name = _('Категория')
-        verbose_name_plural = _('Категории')
+        verbose_name = _('Модель')
+        verbose_name_plural = _('Модели')
 
 
-# Модель для товаров
+# img -> file
 def product_image_path(instance, filename):
     # Upload to "Product_images/<name>/" using the current timestamp
     return f'Product_imgs/{instance.name}/{timezone.now().strftime("%Y%m%d%H%M%S")}_{filename}'
 
 
+# Модель для товаров
 class Product(BaseModel):
     name = models.CharField(_('Наименование'), max_length=204)
     img1 = models.ImageField(_('Изображение'), upload_to=product_image_path, blank=True, null=True)
     img2 = models.ImageField(_('Изображение'), upload_to=product_image_path, blank=True, null=True)
     img3 = models.ImageField(_('Изображение'), upload_to=product_image_path, blank=True, null=True)
-    img4 = models.ImageField(_('Изображение'), upload_to=product_image_path, blank=True, null=True)
-    category = models.ManyToManyField(Category)
+    model = models.ForeignKey(Model, on_delete=models.SET_NULL, null=True, verbose_name=_('Модель'))
     description = models.TextField(_('Описание'), blank=True, null=True)
-    # quantity = models.PositiveIntegerField(default=0)  # Количество товара
-    price = models.CharField(_('Цена'), max_length=20)
+    price = models.DecimalField(_('Цена'), max_digits=10, decimal_places=2)
     manufacturer = models.CharField(_('Производитель'), max_length=100, blank=True, null=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     is_recommended = models.BooleanField(default=False)
@@ -46,13 +46,3 @@ class Product(BaseModel):
     class Meta:
         verbose_name = _('Товар')
         verbose_name_plural = _('Товары')
-
-# Модель для отзывов о товарах
-# class Review(models.Model):
-#     product = models.ForeignKey(Product, on_delete=models.CASCADE)  # Связь с моделью Product
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)  # Связь с моделью User
-#     text = models.TextField()
-#     rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])  # Рейтинг отзыва
-#
-#     def __str__(self):
-#         return f"{self.product} - {self.user}"

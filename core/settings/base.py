@@ -30,8 +30,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'app.basemodel',
     'app.product',
-    'app.about_us',
-    'app.ContactUsMessage'
+    'app.contact',
 
 
 ]
