@@ -11,9 +11,9 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG', default=True)
 
 if DEBUG:
-    from .local import *
-else:
     from .prod import *
+else:
+    from .local import *
 
 # Application definition
 INSTALLED_APPS = [
