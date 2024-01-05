@@ -21,24 +21,26 @@ class Model(BaseModel):
         verbose_name_plural = _('Модели')
 
 
-# img -> file
+# Функция для генерации пути загружаемого изображения товара
 def product_image_path(instance, filename):
-    # Upload to "Product_images/<name>/" using the current timestamp
-    return f'Product_imgs/{instance.name}/{timezone.now().strftime("%Y%m%d%H%M%S")}_{filename}'
+    # Use the model name as a subdirectory within "Product_images" and include timestamp
+    return f'Product_images/{instance.model.title}/{timezone.now().strftime("%Y%m%d%H%M%S")}_{filename}'
 
 
 # Модель для товаров
 class Product(BaseModel):
     name = models.CharField(_('Наименование'), max_length=204)
-    img1 = models.ImageField(_('Изображение'), upload_to=product_image_path, blank=True, null=True)
-    img2 = models.ImageField(_('Изображение'), upload_to=product_image_path, blank=True, null=True)
-    img3 = models.ImageField(_('Изображение'), upload_to=product_image_path, blank=True, null=True)
+    img1 = models.ImageField(_('Изображение 1'), upload_to=product_image_path, blank=True, null=True)
+    img2 = models.ImageField(_('Изображение 2'), upload_to=product_image_path, blank=True, null=True)
+    img3 = models.ImageField(_('Изображение 3'), upload_to=product_image_path, blank=True, null=True)
     model = models.ForeignKey(Model, on_delete=models.SET_NULL, null=True, verbose_name=_('Модель'))
+    serial_number = models.CharField(_('Серийный номер'), max_length=255, unique=True)
     description = models.TextField(_('Описание'), blank=True, null=True)
     price = models.DecimalField(_('Цена'), max_digits=10, decimal_places=2)
     manufacturer = models.CharField(_('Производитель'), max_length=100, blank=True, null=True)
+    material = models.CharField(_('Материал изделия'), max_length=255)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
-    is_recommended = models.BooleanField(default=False)
+    is_recommended = models.BooleanField(default=False, verbose_name=_('Рекомендуемый'))
 
     def __str__(self):
         return self.name

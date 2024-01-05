@@ -5,7 +5,7 @@ services:
     image: postgres:latest
     container_name: data_IntermetalPlus
     environment:
-      - POSTGRES_DB=intermetalplus_
+      - POSTGRES_DB=kg
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=kg121007
     ports:

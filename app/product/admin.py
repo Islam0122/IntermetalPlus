@@ -1,11 +1,15 @@
 from django.contrib import admin
 from .models import Product, Model
 from django.utils.translation import gettext_lazy as _
+from django.contrib import admin
+from django.utils.translation import gettext as _
+
 
 @admin.register(Model)
 class ModelAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at', 'updated_at')
     search_fields = ('title',)
+
 
 class RecommendationFilter(admin.SimpleListFilter):
     title = _('Рекомендация')
@@ -24,11 +28,13 @@ class RecommendationFilter(admin.SimpleListFilter):
         elif value == 'all':
             return queryset.all()
 
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'model', 'manufacturer', 'price', 'created_at', 'updated_at')
-    list_filter = ('model', RecommendationFilter)
-    search_fields = ('name', 'model','manufacturer')
+    list_display = ('name', 'serial_number', 'model', 'manufacturer', 'price', 'created_at')
+    list_filter = ('model', RecommendationFilter,'manufacturer')
+    search_fields = ('name', 'model__title', 'manufacturer','serial_number')
+
 
     def formfield_for_dbfield(self, db_field, request, **kwargs):
         if db_field.name == 'is_recommended':
@@ -38,7 +44,7 @@ class ProductAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         if obj.is_recommended:
             recommended_count = Product.objects.filter(is_recommended=True).count()
-            if recommended_count >= 6:
+            if recommended_count >= 10:
                 self.message_user(request, "Cannot set more than six products as recommended.", level="error")
                 obj.is_recommended = False
         super().save_model(request, obj, form, change)
