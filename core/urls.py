@@ -6,4 +6,5 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('api/v1/contact/', include("app.contact.urls")),
                   path('api/v1/products/', include("app.product.urls")),
+                  path('api/v1/contactusmessage/', include("app.ContactUsMessage.urls")),
               ] + urls_swagger

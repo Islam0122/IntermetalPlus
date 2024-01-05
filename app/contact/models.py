@@ -4,6 +4,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class Contact(models.Model):
     phone_number = PhoneNumberField(max_length=20, verbose_name='Номер телефона')
+    email = models.EmailField(verbose_name='Email')
     telegram_url = models.URLField(
         blank=True,
         null=True,

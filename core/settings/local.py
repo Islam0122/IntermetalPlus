@@ -5,7 +5,7 @@ from decouple import config as env , config
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 ALLOWED_HOSTS = ['*']
-DEBUG = False
+DEBUG = True
 
 DATABASES = {
     'default': {

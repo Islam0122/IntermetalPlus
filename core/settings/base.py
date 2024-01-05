@@ -11,7 +11,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG', default=True)
 
 if DEBUG:
-    from .prod import *
+    from .local import *
 else:
     from .local import *
 
@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'app.basemodel',
     'app.product',
     'app.contact',
+    'app.ContactUsMessage'
 
 
 ]
