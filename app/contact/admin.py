@@ -25,7 +25,7 @@ admin.site.register(Contact, ContactAdmin)
 def create_about_us(sender, **kwargs):
     if Contact.objects.count() == 0:
         Contact.objects.create(
-            email='devoilt@gmail.com',
+            email='dujsobaevislam01@gmail.com@gmail.com',
             phone_number='+996995121007',
             instagram_url='https://go.2gis.com/jsgykq',
             telegram_url='https://go.2gis.com/jsgykq'

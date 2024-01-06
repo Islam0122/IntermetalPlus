@@ -69,3 +69,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 WSGI_APPLICATION = 'core.wsgi.application'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Настройки для подключения к реальному SMTP-серверу (в продакшне)
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'your_smtp_server'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'your_smtp_username'
+# EMAIL_HOST_PASSWORD = 'your_smtp_password

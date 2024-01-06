@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import ContactUsMessageCreateView
+from .views import ContactUsMessageViewSet
 
 urlpatterns = [
-    path('', ContactUsMessageCreateView.as_view(), name='contact-us'),
+    path('', ContactUsMessageViewSet.as_view({'post': 'create'}), name='contact-us'),
 ]
