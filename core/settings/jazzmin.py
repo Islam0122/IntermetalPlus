@@ -1,5 +1,12 @@
 JAZZMIN_SETTINGS = {
+    "show_sidebar": True,
+    "navigation_expanded": False,
+    "changeform_format": "horizontal_tabs",
+    "related_modal_active": True,
     "show_ui_builder": False,
+    "show_fieldsets": True,
+    "theme": "default",  # или другая тема на ваш выбор
+    "iconset": "fontawesome5",
     "ui_builder": {
         "theme": "default",
         "scale": "compact",

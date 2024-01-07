@@ -32,9 +32,8 @@ class RecommendationFilter(admin.SimpleListFilter):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'serial_number', 'model', 'manufacturer', 'price', 'created_at')
-    list_filter = ('model', RecommendationFilter,'manufacturer')
-    search_fields = ('name', 'model__title', 'manufacturer','serial_number')
-
+    list_filter = ('model', RecommendationFilter, 'manufacturer')
+    search_fields = ('name', 'model__title', 'manufacturer', 'serial_number')
 
     def formfield_for_dbfield(self, db_field, request, **kwargs):
         if db_field.name == 'is_recommended':
