@@ -36,7 +36,7 @@ class Product(BaseModel):
     model = models.ForeignKey(Model, on_delete=models.SET_NULL, null=True, verbose_name=_('Модель'))
     serial_number = models.CharField(_('Серийный номер'), max_length=255, unique=True)
     description = models.TextField(_('Описание'))
-    price = models.CharField(_('Цена'))
+    price = models.CharField(_('Цена'), max_length=200)
     manufacturer = models.CharField(_('Производитель'), max_length=100)
     material = models.CharField(_('Материал изделия'), max_length=255)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
