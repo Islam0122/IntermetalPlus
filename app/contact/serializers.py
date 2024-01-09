@@ -8,6 +8,5 @@ class ContactSerializer(serializers.ModelSerializer):
         fields = (
             'email',
             'phone_number',
-            'telegram_url',
-            'instagram_url',
+            'whatsapp_number',
         )

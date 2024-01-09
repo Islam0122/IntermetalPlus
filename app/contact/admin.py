@@ -5,7 +5,7 @@ from .models import Contact
 
 
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('email','phone_number', 'instagram_url', 'telegram_url')
+    list_display = ('email','phone_number','whatsapp_number',)
     actions = None
 
     def has_add_permission(self, request):
@@ -27,6 +27,5 @@ def create_about_us(sender, **kwargs):
         Contact.objects.create(
             email='intermetalplus2024@gmail.com',
             phone_number='+996995121007',
-            instagram_url='https://go.2gis.com/jsgykq',
-            telegram_url='https://go.2gis.com/jsgykq'
+            whatsapp_number='+996995121007'
         )
