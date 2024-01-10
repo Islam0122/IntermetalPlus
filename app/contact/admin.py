@@ -26,6 +26,6 @@ def create_about_us(sender, **kwargs):
     if Contact.objects.count() == 0:
         Contact.objects.create(
             email='intermetalplus2024@gmail.com',
-            phone_number='+996995121007',
-            whatsapp_number='+996995121007'
+            phone_number='+996500770009',
+            whatsapp_number='+996500770009'
         )

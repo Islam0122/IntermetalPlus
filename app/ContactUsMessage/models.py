@@ -7,12 +7,12 @@ from app.contact.models import Contact
 
 
 class ContactUsMessage(BaseModel):
-    name = models.CharField(max_length=255, verbose_name='Name')
-    contact_phone = PhoneNumberField(blank=True, verbose_name='Contact Phone')
-    email = models.EmailField(verbose_name='Email')
-    message = models.TextField(verbose_name='Message')
+    name = models.CharField(max_length=255, verbose_name='Название')
+    contact_phone = models.CharField(max_length=20, verbose_name='Номер телефона')
+    email = models.EmailField(verbose_name='Электронная почта')
+    message = models.TextField(verbose_name='Сообщение')
 
     class Meta:
-        verbose_name = 'Contact Us Message'
-        verbose_name_plural = 'Contact Us Messages'
+        verbose_name = 'Связаться с нами'
+        verbose_name_plural = 'Связаться с нами'
         ordering = ['-id']
