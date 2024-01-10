@@ -8,6 +8,6 @@ COPY req.txt /app/
 
 COPY . /app/
 
-RUN pip install --no-cahce-dir -r /app/req.txt && python3 manage.py collectstatic
+RUN pip install --no-cache-dir -r /app/req.txt && python3 manage.py collectstatic
 
 RUN python3 manage.py makemigrations
