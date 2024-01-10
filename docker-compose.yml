@@ -7,9 +7,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB=databases
-      POSTGRES_USER=postgres
-      POSTGRES_PASSWORD=kg121007
+      POSTGRES_DB: databases
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: kg121007
     ports:
       - "5432:5432"
 
@@ -33,15 +33,15 @@ services:
     depends_on: 
       - db
 
-    nginx:
-      image: nginx
-      container_name: docker_nginx
-      volumes:
-        - ./nginx/nginx.conf:/etc/nginx/conf.d/default_conf
-        - static_data:/app/static
-        - media_data:/app/meida 
-      ports:
-      - "80:80"
+  nginx:
+    image: nginx
+    container_name: docker_nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default_conf
+      - static_data:/app/static
+      - media_data:/app/meida 
+    ports:
+    - "80:80"
 
 volumes:
   static_data:
