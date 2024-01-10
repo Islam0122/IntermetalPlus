@@ -39,7 +39,9 @@ services:
       - static_data:/app/static
       - media_data:/app/meida 
     ports:
-    - "80:80"
+      - "80:80"
+    depends_on:
+      - backend
 
 volumes:
   static_data:
