@@ -6,6 +6,8 @@ ENV PYTHONUNBUFFERED 1
 
 COPY req.txt /app/
 
-RUN pip install -r /app/req.txt
-
 COPY . /app/
+
+RUN pip install --no-cahce-dir -r /app/req.txt && python3 manage.py collectstatic
+
+RUN python3 manage.py makemigrations

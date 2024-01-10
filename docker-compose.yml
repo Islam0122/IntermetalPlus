@@ -4,20 +4,46 @@ services:
   db:
     image: postgres:latest
     container_name: data_IntermetalPlus
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=databases
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=kg121007
+      POSTGRES_DB=databases
+      POSTGRES_USER=postgres
+      POSTGRES_PASSWORD=kg121007
     ports:
       - "5432:5432"
 
   backend:
     build: .
     container_name: IntermetalPlus
+    volumes:
+      - static_data:/app/static
+      - media_data:/app/meida 
     depends_on:
       - db
-    command: sh -c "python manage.py makemigrations &&
-      python manage.py migrate &&
-      python manage.py runserver 0.0.0.0:8000"
+      - migrations
+    command:
+      sh -c "gunicorn core.wsgi:application --bind 0.0.0.0:8000"
     ports:
       - "8000:8000"
+
+  migrations:
+    build: .
+    command: sh -c "python3 manage.py makemigrations && python3 manage.py migrate"
+    depends_on: 
+      - db
+
+    nginx:
+      image: nginx
+      container_name: docker_nginx
+      volumes:
+        - ./nginx/nginx.conf:/etc/nginx/conf.d/default_conf
+        - static_data:/app/static
+        - media_data:/app/meida 
+      ports:
+      - "80:80"
+
+volumes:
+  static_data:
+  media_data:
+  postgres_data: 
