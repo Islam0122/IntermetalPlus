@@ -37,7 +37,7 @@ services:
     image: nginx
     container_name: docker_nginx
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default_conf
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - static_data:/app/static
       - media_data:/app/meida 
     ports:
