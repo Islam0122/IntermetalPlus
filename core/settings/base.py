@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from decouple import config as env
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
@@ -63,12 +63,13 @@ TEMPLATES = [
         },
     },
 ]
+WSGI_APPLICATION = 'core.wsgi.application'
+
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR.joinpath("static")
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-WSGI_APPLICATION = 'core.wsgi.application'
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

@@ -2,7 +2,7 @@ from pathlib import Path
 from decouple import config as env , config
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = env('SECRET_KEY')
 ALLOWED_HOSTS = ['*']
 DEBUG = env('DEBUG')
