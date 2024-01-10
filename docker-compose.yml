@@ -16,7 +16,7 @@ services:
     container_name: IntermetalPlus
     volumes:
       - static_data:/app/static
-      - media_data:/app/media 
+      - media_data:/app/meida 
     depends_on:
       - db
       - migrations
@@ -37,7 +37,7 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - static_data:usr/src/app/static
-      - media_data:usr/src//app/media 
+      - media_data:usr/src//app/meida 
     ports:
       - "80:80"
     depends_on:
