@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 from decouple import config as env
+from . import jazzmin
+from .. import drf_yasg
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -11,13 +13,12 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG', default=True)
 
 if DEBUG:
-    from .prod import *
+    from .local import *
 else:
     from .local import *
 
 # Application definition
 INSTALLED_APPS = [
-
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -32,7 +33,6 @@ INSTALLED_APPS = [
     'app.product',
     'app.contact',
     'app.ContactUsMessage'
-
 
 ]
 
@@ -63,13 +63,20 @@ TEMPLATES = [
         },
     },
 ]
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+
+USE_I18N = True
+
+USE_TZ = True
+
 WSGI_APPLICATION = 'core.wsgi.application'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR.joinpath("static")
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
+MEDIA_ROOT = BASE_DIR.joinpath("media")
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -80,4 +87,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD =env('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')

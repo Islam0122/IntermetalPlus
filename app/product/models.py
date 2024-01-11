@@ -1,9 +1,8 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
-from django.contrib.auth.models import User
 from django.utils.translation import gettext as _
-from django.conf import settings
 
 from app.basemodel.models import BaseModel
 
@@ -16,7 +15,7 @@ def product_image_path(instance, filename):
 
 # Model for products
 class Product(BaseModel):
-    name = models.CharField(_('Название товора'), max_length=204)
+    name = models.CharField(_('Наименование'), max_length=204)
     img1 = models.ImageField(_('Изображение 1'), upload_to=product_image_path)
     img2 = models.ImageField(_('Изображение 2'), upload_to=product_image_path)
     img3 = models.ImageField(_('Изображение 3'), upload_to=product_image_path)

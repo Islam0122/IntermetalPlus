@@ -5,7 +5,7 @@ from .models import Contact
 
 
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('email','phone_number','whatsapp_number',)
+    list_display = ('email', 'phone_number', 'whatsapp_number',)
     actions = None
 
     def has_add_permission(self, request):

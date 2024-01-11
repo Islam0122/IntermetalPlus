@@ -16,7 +16,7 @@ services:
     container_name: IntermetalPlus
     volumes:
       - static_data:/app/static
-      - media_data:/app/meida 
+      - media_data:/app/media
     depends_on:
       - db
       - migrations
