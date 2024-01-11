@@ -1,15 +1,14 @@
 JAZZMIN_SETTINGS = {
-    "site_title": "IntermetalPlus Admin Panel!",
-    "site_header": "IntermetalPlus Admin Panel!",
-    "site_brand": "IntermetalPlus Admin Panel!",
+    "site_title": "IntermetalPlus",
+    "site_header": "IntermetalPlus",
+    "site_brand": "IntermetalPlus",
     "site_logo_classes": "img-circle",
-    # "site_logo": "/assets/icons/admin_logo.png",
     "welcome_sign": "Добро пожаловать в панель администратора IntermetalPlus Admin Panel!",
-    "copyright": "Geeks Pro",
+    "copyright": "IntermetalPlus",
     # "search_model": "src.services",
-    "user_avatar": '/static/logo-fanat.png',
     "topmenu_links": [
-        {"name": "Главная", "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": "IntermetalPlus", "url": "http://146.190.140.32/api/v1/products/", "permissions": ["auth.view_user"]},
+        {"model": "auth.User"},
     ],
     "usermenu_links": [
         {

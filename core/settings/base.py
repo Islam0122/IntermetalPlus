@@ -1,8 +1,7 @@
 import os
 from pathlib import Path
 from decouple import config as env
-from . import jazzmin
-from .. import drf_yasg
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -88,3 +87,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+
+
+
+from .jazzmin import JAZZMIN_SETTINGS
